@@ -52,12 +52,27 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="48dp"
-        android:enabled="false"
         android:text="@string/action_sign_in_short"
         android:textColor="#F8F8F8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <Button
+        android:id="@+id/create_account"
+        style="@style/AppTheme.RoundedCornerMaterialButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:text="@string/create"
+        android:textColor="#F8F8F8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
+
 
 
     <ProgressBar
@@ -75,32 +90,6 @@
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
-
-    <TextView
-        android:id="@+id/createAccountPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/title_activity_sign_up_prompt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/createAccountButton"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="70dp"
-        android:layout_height="18dp"
-        android:layout_marginEnd="72dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#00FFFFFF"
-        android:onClick="goToSignUp"
-        android:text="@string/title_activity_sign_up"
-        android:textColor="#2196F3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/createAccountPrompt" />
 
     <TextView
         android:id="@+id/textView"
