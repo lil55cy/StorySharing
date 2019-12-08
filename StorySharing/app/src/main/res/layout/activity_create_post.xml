@@ -85,7 +85,16 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="100dp"
                 android:layout_height="match_parent" />
-
         </LinearLayout>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle"
+            android:text="@string/submit"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
