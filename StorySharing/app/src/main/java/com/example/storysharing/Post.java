@@ -9,6 +9,7 @@ public class Post implements Serializable {
     public boolean publish;
     public String pid; // post id
     public String uid; // user id
+    public int photoNum;
 
     public Post() {
 
@@ -21,5 +22,6 @@ public class Post implements Serializable {
         this.publish = publish;
         this.pid = pid;
         this.uid = uid;
+        this.photoNum = -1;
     }
 }

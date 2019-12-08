@@ -35,7 +35,7 @@ public class PostListAdapter extends ArrayAdapter<Post> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         String body = getItem(position).body;
         String title = getItem(position).title;
         String email = getItem(position).email;
@@ -70,7 +70,9 @@ public class PostListAdapter extends ArrayAdapter<Post> {
             public void onFailure(@NonNull Exception e) {
                 //set default random
                 // imageView.setImageResource(R.drawable.avatar1);
-                imageView.setImageResource(getRandomImage());
+                int i = getRandomImage();
+                getItem(position).photoNum = i;
+                imageView.setImageResource(i);
             }
         });
 

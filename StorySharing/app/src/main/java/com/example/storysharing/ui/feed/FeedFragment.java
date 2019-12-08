@@ -16,6 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.storysharing.Post;
 import com.example.storysharing.PostListAdapter;
 import com.example.storysharing.R;
+import com.example.storysharing.SelectPostActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -62,17 +63,17 @@ public class FeedFragment extends Fragment {
             }
         });
 
-        /*
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getContext(), SelectChallengeActivity.class);
-                intent.putExtra("challenge", challenges.get(i));
+                Intent intent = new Intent(getContext(), SelectPostActivity.class);
+                intent.putExtra("post", posts.get(i));
                 startActivity(intent);
             }
         });
 
-         */
+
 
         return root;
     }
