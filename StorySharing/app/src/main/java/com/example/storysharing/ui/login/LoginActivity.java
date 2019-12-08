@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements
                             updateUI(user);
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "Account already exists.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }

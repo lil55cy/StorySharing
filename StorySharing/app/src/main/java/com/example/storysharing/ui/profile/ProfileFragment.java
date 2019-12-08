@@ -32,17 +32,7 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        /*
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
 
-         */
 
         return root;
     }
