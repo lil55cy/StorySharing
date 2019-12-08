@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity implements
 
         mEmailField = findViewById(R.id.username);
         mPasswordField = findViewById(R.id.password);
-        findViewById(R.id.login).setOnClickListener(this);
         findViewById(R.id.create_account).setOnClickListener(this);
 
         final Button login = findViewById(R.id.login);
@@ -66,7 +65,6 @@ public class LoginActivity extends AppCompatActivity implements
             }
         });
 
-        // login.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
     }
 
