@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-
-
+        FirebaseUtility.saveNewPost("Test", "This is a test", true);
     }
 
 }
