@@ -18,14 +18,15 @@ public class FirebaseUtility {
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
     private static FirebaseAuth mAuth;
 
-    public static Post saveNewPost(String title, String body, boolean publish) {
+    public static Post saveNewPost(String title, String body, String email, boolean publish) {
         mAuth = FirebaseAuth.getInstance();
         String key = mDatabase.child("posts").push().getKey();
-        Post post = new Post(title, body, publish, key, mAuth.getUid());
+        Post post = new Post(title, body, email, publish, key, mAuth.getUid());
 
         Map<String, Object> childUpdates = new HashMap<>();
 
-        childUpdates.put("/posts/" + mAuth.getUid() + "/" + key, post);
+        // childUpdates.put("/posts/" + mAuth.getUid() + "/" + key, post);
+        childUpdates.put("/posts/" + key, post);
 
         mDatabase.updateChildren(childUpdates);
 
