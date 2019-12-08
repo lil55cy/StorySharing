@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUtility.saveNewPost("Test", "This is a test", "", true);
 
          */
+
     }
 
 }

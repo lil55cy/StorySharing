@@ -53,7 +53,6 @@ public class PostListAdapter extends ArrayAdapter<Post> {
         bodyTextView.setText(body);
 
 
-
         //set image
         final ImageView imageView = convertView.findViewById(R.id.profile_photo);
         String uid = getItem(position).uid;
@@ -62,17 +61,40 @@ public class PostListAdapter extends ArrayAdapter<Post> {
         mStorage.child(uid).getBytes(5000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes , 0, bytes.length);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 imageView.setImageBitmap(bitmap);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                //set default
-                imageView.setImageResource(R.drawable.avatar1);
+                //set default random
+                // imageView.setImageResource(R.drawable.avatar1);
+                imageView.setImageResource(getRandomImage());
             }
         });
 
         return convertView;
+    }
+
+    private int getRandomImage() {
+        int randomNum = (int) (Math.random() * 8);
+        switch (randomNum) {
+            case 1:
+                return R.drawable.avatar2;
+            case 2:
+                return R.drawable.avatar3;
+            case 3:
+                return R.drawable.avatar4;
+            case 4:
+                return R.drawable.avatar5;
+            case 5:
+                return R.drawable.avatar6;
+            case 6:
+                return R.drawable.avatar7;
+            case 7:
+                return R.drawable.avatar8;
+            default:
+                return R.drawable.avatar1;
+        }
     }
 }
