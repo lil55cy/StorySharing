@@ -25,9 +25,7 @@ public class SelectPostActivity extends AppCompatActivity {
     TextView email;
     ImageView picture;
 
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
-    private FirebaseAuth mAuth;
     private Post post;
 
     @Override

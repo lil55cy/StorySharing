@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.storysharing.CreatePost;
 import com.example.storysharing.Post;
 import com.example.storysharing.PostListAdapter;
 import com.example.storysharing.R;
@@ -73,6 +74,13 @@ public class FeedFragment extends Fragment {
             }
         });
 
+        root.findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CreatePost.class);
+                startActivity(intent);
+            }
+        });
 
 
         return root;
