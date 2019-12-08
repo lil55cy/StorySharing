@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,27 @@ public class LoginActivity extends AppCompatActivity implements
         findViewById(R.id.login).setOnClickListener(this);
         findViewById(R.id.create_account).setOnClickListener(this);
 
+        final Button login = findViewById(R.id.login);
+        login.setVisibility(View.INVISIBLE);
+
+        final Button alreadyHave = findViewById(R.id.already_have);
+        alreadyHave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alreadyHave.setVisibility(View.GONE);
+                login.setVisibility(View.VISIBLE);
+                login.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        EditText username = findViewById(R.id.username);
+                        EditText password = findViewById(R.id.password);
+                        signIn(username.getText().toString(), password.getText().toString());
+                    }
+                });
+            }
+        });
+
+        // login.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
     }
 
