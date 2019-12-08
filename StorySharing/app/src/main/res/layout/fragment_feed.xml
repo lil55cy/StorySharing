@@ -17,7 +17,8 @@
             android:gravity="center_horizontal"
             android:divider="@android:color/transparent"
             android:dividerHeight="10.0sp"
-            android:paddingBottom="65dp" />
+            android:paddingBottom="65dp"
+            />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

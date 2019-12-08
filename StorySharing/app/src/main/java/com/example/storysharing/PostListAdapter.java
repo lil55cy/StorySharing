@@ -53,6 +53,7 @@ public class PostListAdapter extends ArrayAdapter<Post> {
         bodyTextView.setText(body);
 
 
+
         //set image
         final ImageView imageView = convertView.findViewById(R.id.profile_photo);
         String uid = getItem(position).uid;
