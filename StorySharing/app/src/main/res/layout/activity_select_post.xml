@@ -23,10 +23,10 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginBottom="15dp"
+            android:gravity="center"
             android:text="Title"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/title"
@@ -34,18 +34,20 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Title"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/body"
             android:layout_width="350dp"
-            android:layout_height="160dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:scrollbars="vertical"
+            android:scrollbarThumbVertical="@color/white"
             android:text="Description"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
     </LinearLayout>
