@@ -27,8 +27,6 @@ public class LoginActivity extends AppCompatActivity implements
 
     private static final String TAG = "EmailPassword";
 
-    private TextView mStatusTextView;
-    private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
 
@@ -43,25 +41,15 @@ public class LoginActivity extends AppCompatActivity implements
 
         mEmailField = findViewById(R.id.username);
         mPasswordField = findViewById(R.id.password);
-        findViewById(R.id.create_account).setOnClickListener(this);
 
         final Button login = findViewById(R.id.login);
-        login.setVisibility(View.INVISIBLE);
+        login.setOnClickListener(this);
 
-        final Button alreadyHave = findViewById(R.id.already_have);
-        alreadyHave.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.dont_have).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alreadyHave.setVisibility(View.GONE);
-                login.setVisibility(View.VISIBLE);
-                login.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        EditText username = findViewById(R.id.username);
-                        EditText password = findViewById(R.id.password);
-                        signIn(username.getText().toString(), password.getText().toString());
-                    }
-                });
+                Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -73,30 +61,6 @@ public class LoginActivity extends AppCompatActivity implements
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-    }
-
-    private void createAccount(String email, String password) {
-        Log.d(TAG, "createAccount:" + email);
-        if (!validateForm()) {
-            return;
-        }
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Account already exists.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
-                    }
-                });
     }
 
     private void signIn(String email, String password) {
@@ -165,9 +129,7 @@ public class LoginActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.create_account) {
-            createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.login) {
+        if (i == R.id.login) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
         }
 

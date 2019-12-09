@@ -17,9 +17,9 @@
     <string name="welcome">"Welcome!"</string>
     <string name="create">Create Account</string>
     <string name="sign_out">Sign Out</string>
-    <string name="already">Already have an account?</string>
     <string name="title">title</string>
     <string name="body">body</string>
     <string name="email">email</string>
     <string name="submit">Submit</string>
+
 </resources>
