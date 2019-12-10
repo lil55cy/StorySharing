@@ -115,5 +115,72 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
 
+        Button takePictureButton = findViewById(R.id.takePictureButton2);
+        takePictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("marker", "1");
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    Log.i("marker", "2");
+                    startActivityForResult(takePictureIntent, 1);
+                }
+                Log.i("marker", "3");
+                ImageView iv = findViewById(R.id.profile_photo);
+                Uri selectedImageURI = takePictureIntent.getData();
+
+                try {
+                    Log.i("marker", "4");
+                    Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(EditProfileActivity.this.getContentResolver(), selectedImageURI);
+                    Log.i("marker", "5");
+                    iv.setImageBitmap(imageBitmap);
+                    Log.i("marker", "6");
+                    uploadedImage = imageBitmap;
+                    Log.i("marker", "7");
+
+                } catch (Exception e) {
+                    //
+                    Log.e("special", e.toString());
+                    Log.i("marker", "8");
+                }
+            }
+        });
+
+
+    }
+
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 0) {
+
+                Uri selectedImageURI = data.getData();
+
+                ImageView iv = findViewById(R.id.profile_photo);
+                try {
+                    Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageURI);
+                    iv.setImageBitmap(imageBitmap);
+
+                    uploadedImage = imageBitmap;
+
+                } catch (Exception e) {
+                    //
+                }
+
+            }
+            else if (requestCode == 1) {
+                //camera used
+                Bundle extras = data.getExtras();
+                Bitmap imageBitmap = (Bitmap) extras.get("data");
+                ImageView iv = findViewById(R.id.profile_photo);
+                iv.setImageBitmap(imageBitmap);
+
+                uploadedImage = imageBitmap;
+
+            }
+
+        }
     }
 }

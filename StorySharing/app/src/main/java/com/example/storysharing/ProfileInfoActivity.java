@@ -3,10 +3,13 @@ package com.example.storysharing;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -72,6 +75,17 @@ public class ProfileInfoActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 imageView.setImageResource(getRandomImage());
+            }
+        });
+
+        final TextView emailText = findViewById(R.id.email);
+        emailText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("text/plain");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, emailText.getText());
+                startActivity(emailIntent);
             }
         });
     }

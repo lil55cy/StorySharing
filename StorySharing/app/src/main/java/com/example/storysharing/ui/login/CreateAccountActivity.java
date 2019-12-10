@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -160,5 +161,38 @@ public class CreateAccountActivity extends AppCompatActivity implements
         }
 
         return valid;
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 0) {
+
+                Uri selectedImageURI = data.getData();
+
+                ImageView iv = findViewById(R.id.profile_photo);
+                try {
+                    Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageURI);
+                    iv.setImageBitmap(imageBitmap);
+
+                    image = imageBitmap;
+
+                } catch (Exception e) {
+                    //
+                }
+
+            }
+            else if (requestCode == 1) {
+                //camera used
+                Bundle extras = data.getExtras();
+                Bitmap imageBitmap = (Bitmap) extras.get("data");
+                ImageView iv = findViewById(R.id.profile_photo);
+                iv.setImageBitmap(imageBitmap);
+
+                image = imageBitmap;
+
+            }
+
+        }
     }
 }
