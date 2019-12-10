@@ -64,9 +64,7 @@ public class PostListAdapter extends ArrayAdapter<Post> {
             @Override
             public void onSuccess(byte[] bytes) {
                 if (getItem(position).publish) {
-                    int i = getRandomImage();
-                    getItem(position).photoNum = i;
-                    imageView.setImageResource(i);
+                    imageView.setImageResource(R.drawable.avatar8);
                 } else {
                     Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                     imageView.setImageBitmap(bitmap);
@@ -88,7 +86,7 @@ public class PostListAdapter extends ArrayAdapter<Post> {
     }
 
     private int getRandomImage() {
-        int randomNum = (int) (Math.random() * 8);
+        int randomNum = (int) (Math.random() * 7);
         switch (randomNum) {
             case 1:
                 return R.drawable.avatar2;
@@ -102,8 +100,6 @@ public class PostListAdapter extends ArrayAdapter<Post> {
                 return R.drawable.avatar6;
             case 6:
                 return R.drawable.avatar7;
-            case 7:
-                return R.drawable.avatar8;
             default:
                 return R.drawable.avatar1;
         }

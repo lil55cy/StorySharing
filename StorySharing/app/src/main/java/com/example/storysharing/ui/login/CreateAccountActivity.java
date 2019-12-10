@@ -49,7 +49,7 @@ public class CreateAccountActivity extends AppCompatActivity implements
         ImageView imageView = findViewById(R.id.profile_photo);
 
         int[] images = {R.drawable.avatar1,R.drawable.avatar2,R.drawable.avatar3,R.drawable.avatar4,
-                R.drawable.avatar5, R.drawable.avatar6, R.drawable.avatar7, R.drawable.avatar8};
+                R.drawable.avatar5, R.drawable.avatar6, R.drawable.avatar7};
         Random rand = new Random();
         int index = rand.nextInt(images.length);
         imageView.setImageResource(images[index]);

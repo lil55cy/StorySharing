@@ -44,8 +44,12 @@ public class SelectPostActivity extends AppCompatActivity {
         mStorage.child(post.uid).getBytes(5000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes , 0, bytes.length);
-                picture.setImageBitmap(bitmap);
+                if (post.publish) {
+                    picture.setImageResource(R.drawable.avatar8);
+                } else {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    picture.setImageBitmap(bitmap);
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
