@@ -21,5 +21,8 @@
     <string name="body">body</string>
     <string name="email">email</string>
     <string name="submit">Submit</string>
+    <string name="hotline">1-800-273-8255</string>
+    <string name="website">website</string>
+    <string name="help_someone">help someone</string>
 
 </resources>

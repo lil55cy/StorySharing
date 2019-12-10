@@ -1,5 +1,7 @@
 package com.example.storysharing.ui.resources;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,37 @@ public class ResourcesFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_resources, container, false);
+
+        root.findViewById(R.id.hotline).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialContactPhone("18002738255");
+            }
+        });
+
+        root.findViewById(R.id.website).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openURL("https://suicidepreventionlifeline.org/");
+            }
+        });
+
+        root.findViewById(R.id.help_someone).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openURL("https://suicidepreventionlifeline.org/help-someone-else/");
+            }
+        });
         return root;
+    }
+
+    private void dialContactPhone(final String phoneNumber) {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)));
+    }
+
+    private void openURL(String url) {
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 }
