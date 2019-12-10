@@ -119,29 +119,29 @@ public class EditProfileActivity extends AppCompatActivity {
         takePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("marker", "1");
+                // Log.i("marker", "1");
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    Log.i("marker", "2");
+                    // Log.i("marker", "2");
                     startActivityForResult(takePictureIntent, 1);
                 }
-                Log.i("marker", "3");
+                // Log.i("marker", "3");
                 ImageView iv = findViewById(R.id.profile_photo);
                 Uri selectedImageURI = takePictureIntent.getData();
 
                 try {
-                    Log.i("marker", "4");
+                    // Log.i("marker", "4");
                     Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(EditProfileActivity.this.getContentResolver(), selectedImageURI);
-                    Log.i("marker", "5");
+                    // Log.i("marker", "5");
                     iv.setImageBitmap(imageBitmap);
-                    Log.i("marker", "6");
+                    // Log.i("marker", "6");
                     uploadedImage = imageBitmap;
-                    Log.i("marker", "7");
+                    // Log.i("marker", "7");
 
                 } catch (Exception e) {
                     //
-                    Log.e("special", e.toString());
-                    Log.i("marker", "8");
+                    // Log.e("special", e.toString());
+                    // Log.i("marker", "8");
                 }
             }
         });
