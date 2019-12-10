@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.storysharing.ui.profile.ProfileFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,15 +31,6 @@ import com.google.firebase.storage.StorageReference;
 import java.util.Map;
 
 public class EditProfileActivity extends AppCompatActivity {
-
-    /*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
-    }
-
-     */
 
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
