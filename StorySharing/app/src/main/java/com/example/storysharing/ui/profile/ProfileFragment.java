@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.storysharing.EditProfileActivity;
 import com.example.storysharing.R;
 import com.example.storysharing.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -81,6 +82,15 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception e) {
                 imageView.setImageResource(getRandomImage());
+            }
+        });
+
+
+        root.findViewById(R.id.email).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), EditProfileActivity.class);
+                startActivity(intent);
             }
         });
 
