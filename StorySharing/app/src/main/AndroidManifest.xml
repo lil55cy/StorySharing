@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
-        <activity android:name=".ui.login.CreateAccountActivity"></activity>
+        <activity android:name=".ProfileInfoActivity"></activity>
+        <activity android:name=".ui.login.CreateAccountActivity" />
         <activity android:name=".CreatePost" />
         <activity android:name=".SelectPostActivity" />
         <activity

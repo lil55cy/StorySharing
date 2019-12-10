@@ -3,10 +3,12 @@ package com.example.storysharing;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,6 +58,17 @@ public class SelectPostActivity extends AppCompatActivity {
                 }
             }
         });
+
+        if (!post.email.equals("Anonymous")) {
+            picture.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(SelectPostActivity.this, ProfileInfoActivity.class);
+                    intent.putExtra("post", post);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void findElements() {

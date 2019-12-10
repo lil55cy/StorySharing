@@ -30,9 +30,9 @@ public class FirebaseUtility {
         return post;
     }
 
-    public static void saveNewUser(String fullname, String bio, String uid) {
+    public static void saveNewUser(String fullname, String bio, String uid, String email) {
         mAuth = FirebaseAuth.getInstance();
-        User user = new User(fullname, bio, uid);
+        User user = new User(fullname, bio, uid, email);
         mDatabase.child("userinfo").child(mAuth.getUid()).setValue(user);
     }
 

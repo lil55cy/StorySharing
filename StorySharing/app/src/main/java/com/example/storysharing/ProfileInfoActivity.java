@@ -1,24 +1,17 @@
-package com.example.storysharing.ui.profile;
+package com.example.storysharing;
 
-import android.content.Intent;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
-import com.example.storysharing.R;
-import com.example.storysharing.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,38 +22,36 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.Map;
 
-public class ProfileFragment extends Fragment {
+public class ProfileInfoActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
-    private FirebaseAuth mAuth;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-
-        final View root = inflater.inflate(R.layout.fragment_profile, container, false);
+    private Post post;
 
 
-        Button logout = root.findViewById(R.id.sign_out);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile_info);
 
-        mAuth = FirebaseAuth.getInstance();
-        mDatabase.child("userinfo").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+        post = (Post) getIntent().getSerializableExtra("post");
+
+        Log.i("post id", post.uid + "");
+
+        mDatabase.child("userinfo").child(post.uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 Map userMap = (Map)dataSnapshot.getValue();
-                TextView name = root.findViewById(R.id.name);
+                TextView name = findViewById(R.id.name);
                 name.setText((String)userMap.get("fullname"));
-                TextView bio = root.findViewById(R.id.bio);
+                TextView bio = findViewById(R.id.bio);
                 bio.setText((String)userMap.get("bio"));
+
+                TextView email = findViewById(R.id.email);
+                email.setText((String)userMap.get("email"));
+                Log.i("email", userMap.get("email") + "    ");
+
             }
 
             @Override
@@ -69,9 +60,9 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        final ImageView imageView = root.findViewById(R.id.profile_photo);
+        final ImageView imageView = findViewById(R.id.profile_photo);
 
-        mStorage.child(mAuth.getUid()).getBytes(5000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        mStorage.child(post.uid).getBytes(5000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes , 0, bytes.length);
@@ -83,8 +74,6 @@ public class ProfileFragment extends Fragment {
                 imageView.setImageResource(getRandomImage());
             }
         });
-
-        return root;
     }
 
     private int getRandomImage() {

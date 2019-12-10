@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ProfileInfoActivity">
+
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_photo"
@@ -48,26 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:clickable="true"
-        android:text="Edit Profile"
+        android:text="Email"
         android:textColor="#9575CD"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
-
-
-    <Button
-        android:id="@+id/sign_out"
-        style="@style/AppTheme.RoundedCornerMaterialButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="440dp"
-        android:layout_marginEnd="48dp"
-        android:text="@string/sign_out"
-        android:textColor="#F8F8F8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

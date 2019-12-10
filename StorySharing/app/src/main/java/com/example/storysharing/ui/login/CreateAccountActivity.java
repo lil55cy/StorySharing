@@ -124,7 +124,7 @@ public class CreateAccountActivity extends AppCompatActivity implements
                             Log.d(TAG, "createUserWithEmail:success");
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            FirebaseUtility.saveNewUser(name, bio, user.getUid());
+                            FirebaseUtility.saveNewUser(name, bio, user.getUid(), user.getEmail());
                             if (image != null) {
                                 FirebaseUtility.saveImageToStorage(image);
                             }
