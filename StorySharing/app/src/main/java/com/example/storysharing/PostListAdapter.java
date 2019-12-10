@@ -63,8 +63,14 @@ public class PostListAdapter extends ArrayAdapter<Post> {
         mStorage.child(uid).getBytes(5000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                imageView.setImageBitmap(bitmap);
+                if (getItem(position).publish) {
+                    int i = getRandomImage();
+                    getItem(position).photoNum = i;
+                    imageView.setImageResource(i);
+                } else {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    imageView.setImageBitmap(bitmap);
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
