@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,8 +60,10 @@ public class ProfileFragment extends Fragment {
 
                 Map userMap = (Map)dataSnapshot.getValue();
                 TextView name = root.findViewById(R.id.name);
+                name.setMovementMethod(new ScrollingMovementMethod());
                 name.setText((String)userMap.get("fullname"));
                 TextView bio = root.findViewById(R.id.bio);
+                bio.setMovementMethod(new ScrollingMovementMethod());
                 bio.setText((String)userMap.get("bio"));
             }
 

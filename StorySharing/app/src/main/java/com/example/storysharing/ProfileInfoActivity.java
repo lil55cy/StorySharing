@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -48,9 +49,10 @@ public class ProfileInfoActivity extends AppCompatActivity {
                 Map userMap = (Map)dataSnapshot.getValue();
                 TextView name = findViewById(R.id.name);
                 name.setText((String)userMap.get("fullname"));
+                name.setMovementMethod(new ScrollingMovementMethod());
                 TextView bio = findViewById(R.id.bio);
                 bio.setText((String)userMap.get("bio"));
-
+                bio.setMovementMethod(new ScrollingMovementMethod());
                 TextView email = findViewById(R.id.email);
                 email.setText((String)userMap.get("email"));
                 Log.i("email", userMap.get("email") + "    ");
