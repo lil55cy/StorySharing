@@ -55,6 +55,7 @@ public class ProfileInfoActivity extends AppCompatActivity {
                 bio.setMovementMethod(new ScrollingMovementMethod());
                 TextView email = findViewById(R.id.email);
                 email.setText((String)userMap.get("email"));
+                email.setMovementMethod(new ScrollingMovementMethod());
                 Log.i("email", userMap.get("email") + "    ");
 
             }
@@ -86,7 +87,7 @@ public class ProfileInfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setType("text/plain");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, emailText.getText());
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{post.email});
                 startActivity(emailIntent);
             }
         });

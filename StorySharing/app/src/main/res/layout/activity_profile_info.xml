@@ -54,11 +54,14 @@
 
     <TextView
         android:id="@+id/email"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:text="Email"
+        android:maxLines="2"
+        android:scrollbarThumbVertical="@color/white"
+        android:scrollbars="vertical"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/name"
