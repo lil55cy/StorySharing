@@ -52,6 +52,7 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseUtility.saveNewUser(editName.getText().toString(), editBio.getText().toString(), mAuth.getUid(), mAuth.getCurrentUser().getEmail());
                 Toast.makeText(EditProfileActivity.this, "Your modification has been saved!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
             }
         });
 
@@ -147,6 +148,31 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mStorage.child(mAuth.getUid()).getBytes(5000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes , 0, bytes.length);
+                        FirebaseUtility.rotateImage(bitmap);
+
+                        float rotation = profilePhoto.getRotation();
+                        if (rotation >= 0 && rotation < 90) {
+                            profilePhoto.setRotation(90);
+                        } else if (rotation >= 90 && rotation < 180) {
+                            profilePhoto.setRotation(180);
+                        } else if (rotation >= 180 && rotation < 270) {
+                            profilePhoto.setRotation(270);
+                        } else {
+                            profilePhoto.setRotation(0);
+                        }
+                    }
+                });
+
+            }
+        });
     }
 
 

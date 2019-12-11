@@ -1,6 +1,7 @@
 package com.example.storysharing;
 
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +37,7 @@ public class FirebaseUtility {
         mDatabase.child("userinfo").child(mAuth.getUid()).setValue(user);
     }
 
+
     public static void saveImageToStorage(Bitmap bitmap) {
         mAuth = FirebaseAuth.getInstance();
 
@@ -45,5 +47,21 @@ public class FirebaseUtility {
 
         mStorage.child(mAuth.getUid()).putBytes(data);
 
+    }
+
+    public static void rotateImage(Bitmap inputBitmap) {
+        mAuth = FirebaseAuth.getInstance();
+
+
+        float degrees = 90; //rotation degree
+        Matrix matrix = new Matrix();
+        matrix.setRotate(degrees);
+        Bitmap bitmap = Bitmap.createBitmap(inputBitmap, 0, 0, inputBitmap.getWidth(), inputBitmap.getHeight(), matrix, true);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+        byte[] data = baos.toByteArray();
+
+        mStorage.child(mAuth.getUid()).putBytes(data);
     }
 }

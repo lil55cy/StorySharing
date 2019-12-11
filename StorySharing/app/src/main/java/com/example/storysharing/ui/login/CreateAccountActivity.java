@@ -21,16 +21,21 @@ import com.example.storysharing.FirebaseUtility;
 import com.example.storysharing.MainActivity;
 import com.example.storysharing.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Random;
 
 public class CreateAccountActivity extends AppCompatActivity implements
         View.OnClickListener {
 
+
+    private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
     private static final String TAG = "EmailPassword";
     private EditText mEmailField;
     private EditText mPasswordField;
@@ -46,7 +51,7 @@ public class CreateAccountActivity extends AppCompatActivity implements
         mPasswordField = findViewById(R.id.password);
         findViewById(R.id.create_account).setOnClickListener(this);
 
-        ImageView imageView = findViewById(R.id.profile_photo);
+        final ImageView imageView = findViewById(R.id.profile_photo);
 
         int[] images = {R.drawable.avatar1,R.drawable.avatar2,R.drawable.avatar3,R.drawable.avatar4,
                 R.drawable.avatar5, R.drawable.avatar6, R.drawable.avatar7};
@@ -78,7 +83,6 @@ public class CreateAccountActivity extends AppCompatActivity implements
                 }
             }
         });
-
 
         mAuth = FirebaseAuth.getInstance();
     }
