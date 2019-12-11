@@ -41,6 +41,18 @@ public class SelectPostActivity extends AppCompatActivity {
         body.setText(post.body);
         email.setText(post.email);
 
+        if (!post.email.equals("Anonymous")) {
+            email.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                    emailIntent.setType("text/plain");
+                    emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{post.email});
+                    startActivity(emailIntent);
+                }
+            });
+        }
+
         mStorage.child(post.uid).getBytes(5000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
