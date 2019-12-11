@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.storysharing.EditProfileActivity;
+import com.example.storysharing.FirebaseUtility;
+import com.example.storysharing.MainActivity;
 import com.example.storysharing.R;
 import com.example.storysharing.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -97,6 +99,22 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        root.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mStorage.child(mAuth.getUid()).getBytes(5000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes , 0, bytes.length);
+                        FirebaseUtility.rotateImage(bitmap);
+
+                        startActivity(new Intent(getContext(), MainActivity.class));
+                    }
+                });
+
+            }
+        });
         return root;
     }
 
