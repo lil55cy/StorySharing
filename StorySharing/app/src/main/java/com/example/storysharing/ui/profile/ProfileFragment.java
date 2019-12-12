@@ -99,6 +99,31 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        root.findViewById(R.id.editButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        root.findViewById(R.id.rotate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mStorage.child(mAuth.getUid()).getBytes(5000000).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes , 0, bytes.length);
+                        FirebaseUtility.rotateImage(bitmap);
+
+                        startActivity(new Intent(getContext(), MainActivity.class));
+                    }
+                });
+
+            }
+        });
+
         root.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
