@@ -82,10 +82,10 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="25dp"
         android:background="@drawable/rotate"
         app:layout_constraintStart_toStartOf="@id/profile_photo"
         app:layout_constraintTop_toBottomOf="@id/profile_photo" />
@@ -94,9 +94,10 @@
         android:id="@+id/rotate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="3dp"
         android:clickable="true"
         android:text="Rotate"
+        android:textSize="10dp"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/button"
         app:layout_constraintTop_toTopOf="@+id/button" />
