@@ -38,7 +38,7 @@
         android:id="@+id/bio"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="50dp"
         android:maxLines="11"
         android:text='"This is a bio."'
         android:textColor="@color/white"
