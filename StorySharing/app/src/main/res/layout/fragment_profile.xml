@@ -13,7 +13,7 @@
         app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="35dp"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
@@ -21,7 +21,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_weight="1"
         android:ellipsize="none"
         android:maxLines="2"
@@ -38,8 +38,8 @@
         android:id="@+id/bio"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:maxLines="10"
+        android:layout_marginTop="45dp"
+        android:maxLines="11"
         android:text='"This is a bio."'
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -84,10 +84,11 @@
         android:id="@+id/button"
         android:layout_width="19dp"
         android:layout_height="19dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
         android:background="@drawable/rotate"
         app:layout_constraintStart_toStartOf="@id/profile_photo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/profile_photo" />
 
     <TextView
         android:id="@+id/rotate"

@@ -41,7 +41,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:maxLines="12"
+        android:maxLines="15"
         android:text='"This is a bio."'
         android:scrollbars="vertical"
         android:textColor="@color/white"
