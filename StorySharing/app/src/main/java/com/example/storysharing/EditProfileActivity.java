@@ -51,6 +51,7 @@ public class EditProfileActivity extends AppCompatActivity {
         updateProfile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 FirebaseUtility.saveNewUser(editName.getText().toString(), editBio.getText().toString(), mAuth.getUid(), mAuth.getCurrentUser().getEmail());
+                FirebaseUtility.saveImageToStorage(uploadedImage);
                 Toast.makeText(EditProfileActivity.this, "Your modification has been saved!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
             }
@@ -104,10 +105,6 @@ public class EditProfileActivity extends AppCompatActivity {
                     Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(EditProfileActivity.this.getContentResolver(), selectedImageURI);
                     iv.setImageBitmap(imageBitmap);
                     uploadedImage = imageBitmap;
-                    if (uploadedImage != null) {
-                        //upload image to storage if they added one
-                        FirebaseUtility.saveImageToStorage(uploadedImage);
-                    }
                     Log.i("photo", "is this being called?");
 
                 } catch (Exception e) {
@@ -128,6 +125,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     startActivityForResult(takePictureIntent, 1);
                 }
                 // Log.i("marker", "3");
+                /*
                 ImageView iv = findViewById(R.id.profile_photo);
                 Uri selectedImageURI = takePictureIntent.getData();
 
@@ -145,6 +143,8 @@ public class EditProfileActivity extends AppCompatActivity {
                     // Log.e("special", e.toString());
                     // Log.i("marker", "8");
                 }
+
+                 */
             }
         });
 
@@ -179,8 +179,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 iv.setImageBitmap(imageBitmap);
 
                 uploadedImage = imageBitmap;
-
-                FirebaseUtility.saveImageToStorage(imageBitmap);
             }
 
         }
