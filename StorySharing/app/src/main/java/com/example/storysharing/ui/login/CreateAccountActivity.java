@@ -195,7 +195,6 @@ public class CreateAccountActivity extends AppCompatActivity implements
 
                 image = imageBitmap;
 
-                FirebaseUtility.saveImageToStorage(imageBitmap);
             }
 
         }
