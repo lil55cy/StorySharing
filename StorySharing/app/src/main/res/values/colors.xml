@@ -8,4 +8,5 @@
     <color name="gray">#222222</color>
     <color name="white">#FFFFFF</color>
     <color name="lightHint">#979393</color>
+    <color name="red">#F74747</color>
 </resources>
