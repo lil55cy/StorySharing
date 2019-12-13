@@ -95,11 +95,11 @@ public class EditProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 0);
                 if (uploadedImage != null) {
                     //upload image to storage if they added one
                     FirebaseUtility.saveImageToStorage(uploadedImage);
                 }
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 0);
                 ImageView iv = findViewById(R.id.profile_photo);
                 Uri selectedImageURI = intent.getData();
 
@@ -179,6 +179,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 uploadedImage = imageBitmap;
 
+                FirebaseUtility.saveImageToStorage(imageBitmap);
             }
 
         }

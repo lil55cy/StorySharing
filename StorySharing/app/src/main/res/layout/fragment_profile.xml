@@ -39,7 +39,7 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:maxLines="11"
+        android:maxLines="10"
         android:text='"This is a bio."'
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="420dp"
         android:layout_marginEnd="48dp"
         android:text="@string/sign_out"
         android:textColor="#F8F8F8"
