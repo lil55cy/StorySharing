@@ -66,6 +66,7 @@ public class CreatePost extends AppCompatActivity {
             valid = false;
         } else if (title.getText().length() > 50) {
             title.setError("Max 50 characters");
+            valid = false;
         } else {
             title.setError(null);
         }
