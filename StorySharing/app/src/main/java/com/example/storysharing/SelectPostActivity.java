@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,8 +27,11 @@ public class SelectPostActivity extends AppCompatActivity {
     TextView body;
     TextView email;
     ImageView picture;
+    Button delete;
 
+    private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
+    private static FirebaseAuth mAuth;
     private Post post;
 
     @Override
@@ -36,6 +40,7 @@ public class SelectPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_post);
 
         findElements();
+        mAuth = FirebaseAuth.getInstance();
         post = (Post) getIntent().getSerializableExtra("post");
         title.setText(post.title);
         body.setText(post.body);
@@ -85,6 +90,17 @@ public class SelectPostActivity extends AppCompatActivity {
                 }
             });
         }
+
+        if (mAuth.getUid().equals(post.uid) || post.uid.equals("9i8hFxVElYdJ4zCzUw8udw3AjoW2")) {
+            delete.setVisibility(View.VISIBLE);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mDatabase.child("posts").child(post.pid).removeValue();
+                    startActivity(new Intent(SelectPostActivity.this, MainActivity.class));
+                }
+            });
+        }
     }
 
     private void findElements() {
@@ -92,7 +108,9 @@ public class SelectPostActivity extends AppCompatActivity {
         body = findViewById(R.id.body);
         email = findViewById(R.id.email);
         picture = findViewById(R.id.profile_image);
+        delete = findViewById(R.id.delete_button);
 
         body.setMovementMethod(new ScrollingMovementMethod());
+        delete.setVisibility(View.INVISIBLE);
     }
 }

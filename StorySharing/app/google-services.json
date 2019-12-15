@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "55605448290",
+    "firebase_url": "https://story-sharing-6975b.firebaseio.com",
+    "project_id": "story-sharing-6975b",
+    "storage_bucket": "story-sharing-6975b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55605448290:android:1725905077c857dac00b3b",
+        "android_client_info": {
+          "package_name": "com.example.storysharing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55605448290-lqbc89hhoeijtta2a2olkebv6kne9mjl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-Rf1L5PZoGrjhJXrQJXuTy90zZz_2diU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55605448290-lqbc89hhoeijtta2a2olkebv6kne9mjl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

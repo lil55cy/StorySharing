@@ -45,6 +45,7 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
+            android:maxLines="10"
             android:scrollbars="vertical"
             android:scrollbarThumbVertical="@color/white"
             android:text="Description"
@@ -52,4 +53,20 @@
             android:textSize="16sp" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/delete_button"
+        style="@style/AppTheme.RoundedCornerMaterialButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginEnd="48dp"
+        android:text="@string/delete"
+        android:textColor="#F8F8F8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
