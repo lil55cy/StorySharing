@@ -91,7 +91,7 @@ public class SelectPostActivity extends AppCompatActivity {
             });
         }
 
-        if (mAuth.getUid().equals(post.uid) || post.uid.equals("9i8hFxVElYdJ4zCzUw8udw3AjoW2")) {
+        if (mAuth.getUid().equals(post.uid) || mAuth.getUid().equals("9i8hFxVElYdJ4zCzUw8udw3AjoW2")) {
             delete.setVisibility(View.VISIBLE);
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
