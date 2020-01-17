@@ -12,9 +12,21 @@ import android.widget.Switch;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class CreatePost extends AppCompatActivity {
+    /**
+     * Variable representing the title text box.
+     */
     private EditText title;
+    /**
+     * Variable representing the body text box.
+     */
     private EditText body;
+    /**
+     * Variable representing the anonymous switch button.
+     */
     private Switch anon;
+    /**
+     * Variable allowing us to interact with Firebase authentication.
+     */
     private FirebaseAuth mAuth;
 
     @Override
@@ -56,6 +68,10 @@ public class CreatePost extends AppCompatActivity {
     }
 
 
+    /**
+     * Method to ensure proper input lengths.  Also checks for certain inappropriate words.
+     * @return whether or not the post is valid
+     */
     private boolean validateForm() {
         boolean valid = true;
 
@@ -82,4 +98,6 @@ public class CreatePost extends AppCompatActivity {
 
         return valid;
     }
+
+
 }

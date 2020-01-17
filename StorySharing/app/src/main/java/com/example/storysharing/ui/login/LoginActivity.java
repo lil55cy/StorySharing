@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,11 +24,21 @@ import com.example.storysharing.R;
 public class LoginActivity extends AppCompatActivity implements
         View.OnClickListener {
 
+    /**
+     * Unchangeable variable set to string "EmailPassword".
+     */
     private static final String TAG = "EmailPassword";
-
+    /**
+     * Email text box.
+     */
     private EditText mEmailField;
+    /**
+     * Password text box.
+     */
     private EditText mPasswordField;
-
+    /**
+     * Firebase authentication.
+     */
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
@@ -63,6 +72,11 @@ public class LoginActivity extends AppCompatActivity implements
         updateUI(currentUser);
     }
 
+    /**
+     * Method that uses Firebase authentication to sign in.
+     * @param email user entered email
+     * @param password user entered password
+     */
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
@@ -92,7 +106,10 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
 
-
+    /**
+     * Method to check the format of email and length of password.
+     * @return whether or not email and password are valid
+     */
     private boolean validateForm() {
         boolean valid = true;
 
@@ -115,11 +132,12 @@ public class LoginActivity extends AppCompatActivity implements
         return valid;
     }
 
+    /**
+     * Method to switch to feed after user account is authenticated.
+     * @param user current account user
+     */
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            String welcome = getString(R.string.welcome);
-            Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -29,16 +28,31 @@ import java.util.List;
 
 public class FeedFragment extends Fragment {
 
+    /**
+     * Variable representing the feed list.
+     */
     private ListView listView;
-    private Button createPostButton;
+    /**
+     * Variable representing the swipe refresh.
+     */
     private SwipeRefreshLayout srl;
-
+    /**
+     * Variable allowing us to interact with Firebase
+     */
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    /**
+     * List containing all posts.
+     */
     private List<Post> posts = new ArrayList<>();
-
+    /**
+     * Variable that tells whether or not the list has been loaded.
+     */
     private boolean alreadyLoaded = false;
-
+    /**
+     * List adapter to create the list.
+     */
     PostListAdapter postListAdapter;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -86,8 +100,10 @@ public class FeedFragment extends Fragment {
         return root;
     }
 
-
-    public void fetchPosts() {
+    /**
+     * Method to get all of the posts from realtime database.
+     */
+    private void fetchPosts() {
         if (alreadyLoaded) {
             posts.clear();
         }

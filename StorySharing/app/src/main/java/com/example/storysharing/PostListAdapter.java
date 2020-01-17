@@ -16,15 +16,23 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
 public class PostListAdapter extends ArrayAdapter<Post> {
 
+    /**
+     * Context of feed.
+     */
     private Context mContext;
+    /**
+     * List item style (cell).
+     */
     int mResource;
+    /**
+     * Firebase storage (using for images).
+     */
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
 
 
@@ -85,6 +93,10 @@ public class PostListAdapter extends ArrayAdapter<Post> {
         return convertView;
     }
 
+    /**
+     * Method to generate random image.
+     * @return random image
+     */
     private int getRandomImage() {
         int randomNum = (int) (Math.random() * 7);
         switch (randomNum) {

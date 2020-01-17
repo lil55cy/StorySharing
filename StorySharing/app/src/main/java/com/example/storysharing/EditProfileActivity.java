@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.storysharing.ui.profile.ProfileFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,9 +31,21 @@ import java.util.Map;
 
 public class EditProfileActivity extends AppCompatActivity {
 
+    /**
+     * Firebase database.
+     */
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    /**
+     * Firebase storage (using for images)
+     */
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
+    /**
+     * Firebase authentication.
+     */
     private FirebaseAuth mAuth;
+    /**
+     * Profile image bitmap.
+     */
     private Bitmap uploadedImage;
 
     @Override
@@ -150,7 +161,12 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Method to choose action based of request code.
+     * @param requestCode whether or not to check result code
+     * @param resultCode which action to perform
+     * @param data intent
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 

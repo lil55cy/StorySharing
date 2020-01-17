@@ -21,13 +21,10 @@ import com.example.storysharing.FirebaseUtility;
 import com.example.storysharing.MainActivity;
 import com.example.storysharing.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.Random;
 
@@ -35,11 +32,33 @@ public class CreateAccountActivity extends AppCompatActivity implements
         View.OnClickListener {
 
 
-    private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
+    /**
+     * Unchangeable variable set to string "EmailPassword".
+     */
     private static final String TAG = "EmailPassword";
+    /**
+     * Email text box.
+     */
     private EditText mEmailField;
+    /**
+     * Password text box.
+     */
     private EditText mPasswordField;
+    /**
+     * Bio text box.
+     */
+    private EditText mBioField;
+    /**
+     * Name text box.
+     */
+    private EditText mNameField;
+    /**
+     * Firebase authentication.
+     */
     private FirebaseAuth mAuth;
+    /**
+     * Variable to hold bitmap of image.
+     */
     private Bitmap image;
 
     @Override
@@ -49,6 +68,8 @@ public class CreateAccountActivity extends AppCompatActivity implements
 
         mEmailField = findViewById(R.id.username);
         mPasswordField = findViewById(R.id.password);
+        mBioField = findViewById(R.id.bio);
+        mNameField = findViewById(R.id.name);
         findViewById(R.id.create_account).setOnClickListener(this);
 
         final ImageView imageView = findViewById(R.id.profile_photo);
@@ -94,6 +115,10 @@ public class CreateAccountActivity extends AppCompatActivity implements
         updateUI(currentUser);
     }
 
+    /**
+     * Method to switch to feed after user account is created.
+     * @param user current account user
+     */
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             String welcome = getString(R.string.welcome);
@@ -113,6 +138,11 @@ public class CreateAccountActivity extends AppCompatActivity implements
         }
     }
 
+    /**
+     * Method to create new account.
+     * @param email user email
+     * @param password user password
+     */
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
@@ -145,6 +175,10 @@ public class CreateAccountActivity extends AppCompatActivity implements
                 });
     }
 
+    /**
+     * Method to check the format of email and length of password.
+     * @return whether or not email and password are valid
+     */
     private boolean validateForm() {
         boolean valid = true;
 
@@ -164,9 +198,31 @@ public class CreateAccountActivity extends AppCompatActivity implements
             mPasswordField.setError(null);
         }
 
+        String bio = mBioField.getText().toString();
+        if (TextUtils.isEmpty(bio)) {
+            mBioField.setError("Required.");
+            valid = false;
+        } else {
+            mBioField.setError(null);
+        }
+
+        String name = mNameField.getText().toString();
+        if (TextUtils.isEmpty(name)) {
+            mNameField.setError("Required.");
+            valid = false;
+        } else {
+            mNameField.setError(null);
+        }
+
         return valid;
     }
 
+    /**
+     * Method to choose action based of request code.
+     * @param requestCode whether or not to check result code
+     * @param resultCode which action to perform
+     * @param data intent
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {

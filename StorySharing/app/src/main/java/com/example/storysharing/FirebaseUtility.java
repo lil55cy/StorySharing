@@ -14,10 +14,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirebaseUtility {
+    /**
+     * Firebase database.
+     */
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    /**
+     * Firebase storage (using for images).
+     */
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
+    /**
+     * Firebase authentication.
+     */
     private static FirebaseAuth mAuth;
 
+    /**
+     * Add post to firebase real time database.
+     * @param title title of post
+     * @param body body of post
+     * @param email email address of user who created post
+     * @param publish whether or not the post should be anonymous
+     * @return post object
+     */
     public static Post saveNewPost(String title, String body, String email, boolean publish) {
         mAuth = FirebaseAuth.getInstance();
         String key = mDatabase.child("posts").push().getKey();
@@ -31,13 +48,23 @@ public class FirebaseUtility {
         return post;
     }
 
+    /**
+     * Save new user to firebase.
+     * @param fullname name of user
+     * @param bio user's bio
+     * @param uid user id
+     * @param email user's email address
+     */
     public static void saveNewUser(String fullname, String bio, String uid, String email) {
         mAuth = FirebaseAuth.getInstance();
         User user = new User(fullname, bio, uid, email);
         mDatabase.child("userinfo").child(mAuth.getUid()).setValue(user);
     }
 
-
+    /**
+     * Save image to firebase storage.
+     * @param bitmap image
+     */
     public static void saveImageToStorage(Bitmap bitmap) {
         mAuth = FirebaseAuth.getInstance();
 
@@ -49,6 +76,12 @@ public class FirebaseUtility {
 
     }
 
+    /**
+     * Rotate image 90 degrees clockwise.
+     *
+     * Rotating the image deteriorates quality.
+     * @param inputBitmap image
+     */
     public static void rotateImage(Bitmap inputBitmap) {
         mAuth = FirebaseAuth.getInstance();
 

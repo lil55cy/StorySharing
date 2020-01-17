@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -28,8 +27,17 @@ import java.util.Map;
 
 public class ProfileInfoActivity extends AppCompatActivity {
 
+    /**
+     * Firebase database.
+     */
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    /**
+     * Firebase storage (using for images).
+     */
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
+    /**
+     * Selected post.
+     */
     private Post post;
 
 
@@ -93,6 +101,10 @@ public class ProfileInfoActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method to generate random image.
+     * @return random image
+     */
     private int getRandomImage() {
         int randomNum = (int) (Math.random() * 8);
         switch (randomNum) {

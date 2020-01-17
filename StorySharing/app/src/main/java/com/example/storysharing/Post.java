@@ -3,12 +3,33 @@ package com.example.storysharing;
 import java.io.Serializable;
 
 public class Post implements Serializable {
+    /**
+     * Title of post.
+     */
     public String title;
+    /**
+     * Post body.
+     */
     public String body;
+    /**
+     * Email address of user who created post.
+     */
     public String email;
+    /**
+     * Whether or not post should be anonymous.
+     */
     public boolean publish;
-    public String pid; // post id
-    public String uid; // user id
+    /**
+     * Post id.
+     */
+    public String pid;
+    /**
+     * ID of user who created post.
+     */
+    public String uid;
+    /**
+     * Photo number.
+     */
     public int photoNum;
 
     public Post() {

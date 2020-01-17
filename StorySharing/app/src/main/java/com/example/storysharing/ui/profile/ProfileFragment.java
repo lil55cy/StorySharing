@@ -35,9 +35,19 @@ import java.util.Map;
 
 public class ProfileFragment extends Fragment {
 
+    /**
+     * Firebase database.
+     */
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    /**
+     * Firebase storage (using for images).
+     */
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
+    /**
+     * Firebase authentication.
+     */
     private FirebaseAuth mAuth;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -143,6 +153,10 @@ public class ProfileFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Method to generate a random image.
+     * @return random image
+     */
     private int getRandomImage() {
         int randomNum = (int) (Math.random() * 8);
         switch (randomNum) {

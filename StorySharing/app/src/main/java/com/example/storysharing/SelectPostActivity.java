@@ -23,15 +23,41 @@ import com.google.firebase.storage.StorageReference;
 
 public class SelectPostActivity extends AppCompatActivity {
 
+    /**
+     * Title text.
+     */
     TextView title;
+    /**
+     * Body text.
+     */
     TextView body;
+    /**
+     * Email text.
+     */
     TextView email;
+    /**
+     * Profile picture.
+     */
     ImageView picture;
+    /**
+     * Delete button.
+     */
     Button delete;
-
+    /**
+     * Firebase database.
+     */
     private static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    /**
+     * Firebase storage (used for images).
+     */
     private static StorageReference mStorage = FirebaseStorage.getInstance().getReference();
+    /**
+     * Firebase authentication.
+     */
     private static FirebaseAuth mAuth;
+    /**
+     * Selected post.
+     */
     private Post post;
 
     @Override
@@ -103,6 +129,9 @@ public class SelectPostActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Find elements on app screen.
+     */
     private void findElements() {
         title = findViewById(R.id.title);
         body = findViewById(R.id.body);

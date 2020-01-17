@@ -43,10 +43,18 @@ public class ResourcesFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Method to dial given phone number into default phone app.
+     * @param phoneNumber input phone number
+     */
     private void dialContactPhone(final String phoneNumber) {
         startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)));
     }
 
+    /**
+     * Method to open given url into default browser.
+     * @param url input url
+     */
     private void openURL(String url) {
         Uri uri = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);

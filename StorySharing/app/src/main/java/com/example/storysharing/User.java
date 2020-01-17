@@ -4,9 +4,21 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
+    /**
+     * User's name.
+     */
     public String fullname;
+    /**
+     * User's bio.
+     */
     public String bio;
+    /**
+     * User's id.
+     */
     public String uid;
+    /**
+     * User's email address.
+     */
     public String email;
 
 

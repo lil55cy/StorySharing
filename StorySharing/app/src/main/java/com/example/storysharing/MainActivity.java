@@ -2,7 +2,6 @@ package com.example.storysharing;
 
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
