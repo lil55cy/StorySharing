@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.Switch;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CreatePost extends AppCompatActivity {
     /**
      * Variable representing the title text box.
@@ -100,4 +103,20 @@ public class CreatePost extends AppCompatActivity {
     }
 
 
+    /**
+     * Method to check a string for inappropriate language.
+     * @param input input string
+     * @return whether or not string contains inappropriate language.
+     */
+    private boolean containsInappropriateLanguage(String input) {
+        boolean result = false;
+        Pattern pattern = Pattern.compile(
+                "[ |\\(](ass|asshole|fuck|bitch|bastard|cunt|shit|nigger|twat|cock|pussy|)+[ |\\.|\\)|\\?|\\!]",
+                Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+           result = true;
+        }
+        return result;
+    }
 }
